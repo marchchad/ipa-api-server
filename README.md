@@ -12,3 +12,17 @@ Make sure to install:
 ## Windows - 10
 
 Make sure to install the wheel in `python_dependencies/windows` using `pip`
+
+# Deployments
+
+## Third Party Libraries
+
+To use libraries such as Django Rest Framework, see how to handle installing and packaging third party libraries here: https://cloud.google.com/appengine/docs/standard/python/tools/using-libraries-python-27#installing_a_third-party_library
+
+## Static Files
+
+Don't forget to run `manage.py collectstatic` before deploying
+
+## To Deploy
+
+Haven't figured out how to set up a hook into GitHub commits. For now, use `gcloud app deploy`.
