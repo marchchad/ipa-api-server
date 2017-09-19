@@ -13,6 +13,10 @@ Make sure to install:
 
 Make sure to install the wheel in `python_dependencies/windows` using `pip`
 
+## Miscellaneous
+
+Django OAuth Toolkit getting started is out of date. See [this StackOverflow post](https://stackoverflow.com/a/45029747/1783650) for the necessary modifications to the `settings.py` in order to get everything initially setup.
+
 # Deployments
 
 ## Third Party Libraries
