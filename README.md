@@ -26,3 +26,7 @@ Don't forget to run `manage.py collectstatic` before deploying
 ## To Deploy
 
 Haven't figured out how to set up a hook into GitHub commits. For now, use `gcloud app deploy`.
+
+## SSL
+
+Google App Engine now provides Let's Encrypt certs for all custom domains once ownership is proven. To enforce HTTPS only, update the `app.yaml` to include `secure: always`
