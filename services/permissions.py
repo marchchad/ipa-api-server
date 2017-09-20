@@ -14,7 +14,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         # Write permissions are only allowed to the owner of the snippet.
-        return obj.owner == request.user
+        return obj.created_by == request.user
 
 
 class IsOwnerFilterBackend(filters.BaseFilterBackend):
@@ -22,4 +22,4 @@ class IsOwnerFilterBackend(filters.BaseFilterBackend):
     Filter that only allows users to see their own objects.
     """
     def filter_queryset(self, request, queryset, view):
-        return queryset.filter(owner=request.user)
+        return queryset.filter(created_by=request.user)

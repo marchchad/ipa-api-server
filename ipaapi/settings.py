@@ -71,8 +71,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # default
-    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',  # default
 )
 
 ROOT_URLCONF = 'ipaapi.urls'
@@ -130,26 +129,17 @@ else:
     #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
     #
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'NAME': 'ipa_api_local',
-            'USER': 'ipa_api_local',
-            'PASSWORD': 'ipa_api_local',
+            'PORT': '3307',
+            'NAME': 'ipa_api_staging',
+            'USER': 'ipa_api_staging',
+            'PASSWORD': 'ipa_api_staging',
         }
     }
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.mysql',
-    #         'HOST': '127.0.0.1',
-    #         'PORT': '3307',
-    #         'NAME': 'ipa_api_staging',
-    #         'USER': 'ipa_api_staging',
-    #         'PASSWORD': 'ipa_api_staging',
-    #     }
-    # }
 # [END db_setup]
 
 # Internationalization
@@ -171,3 +161,8 @@ USE_TZ = True
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

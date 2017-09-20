@@ -7,21 +7,21 @@ from models import Keg, Recipe, KegRecipe
 
 
 class KegAdmin(admin.ModelAdmin):
-    readonly_fields = ('id', 'created', 'owner')
-    fields = ('id', 'name', 'created', 'owner',)
-    list_display = ('id', 'name', 'created', 'owner',)
+    readonly_fields = ('id', 'created_by', 'created_on')
+    fields = ('id', 'name', 'created_by', 'created_on',)
+    list_display = ('id', 'name', 'created_by', 'created_on',)
 
 
 class RecipeAdmin(admin.ModelAdmin):
-    readonly_fields = ('id', 'created', 'owner')
-    fields = ('id', 'name', 'created', 'owner',)
-    list_display = ('id', 'name', 'created', 'owner',)
+    readonly_fields = ('id', 'created_by', 'created_on')
+    fields = ('id', 'name', 'created_by', 'created_on',)
+    list_display = ('id', 'name', 'created_by', 'created_on',)
 
 
 class KegRecipeAdmin(admin.ModelAdmin):
-    readonly_fields = ('created',)
-    fields = ('keg_id', 'recipe_id', 'created', 'is_active',)
-    fields = ('keg_id', 'recipe_id', 'created', 'is_active',)
+    readonly_fields = ('created_on',)
+    fields = ('keg_id', 'recipe_id', 'is_active', 'created_on',)
+    list_display = ('id', 'is_active', 'created_on',)
 
 
 admin.site.register(Keg, KegAdmin)

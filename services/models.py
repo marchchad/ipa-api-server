@@ -13,32 +13,36 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class Keg(models.Model):
     name = models.CharField(max_length=100, blank=False, default='Keg1')
-    created = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey('auth.User', related_name='kegs')
+    volume = models.FloatField()
+    created_by = models.ForeignKey('auth.User', related_name='kegs')
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created_on',)
 
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100, default='Recipe1')
     srm = models.FloatField()
     ibus = models.FloatField()
-    created = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey('auth.User', related_name='recipes')
+    created_by = models.ForeignKey('auth.User', related_name='recipes')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created_on',)
 
 
 class KegRecipe(models.Model):
     keg_id = models.ManyToManyField(Keg)
     recipe_id = models.ManyToManyField(Recipe)
     is_active = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created_on',)
