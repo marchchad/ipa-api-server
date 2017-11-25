@@ -1,4 +1,4 @@
-"""ipaapi URL Configuration
+"""ipa-api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -31,5 +31,5 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^api-token-auth/', drf_views.obtain_auth_token),
+    url(r'^api-auth-token/', drf_views.obtain_auth_token),
 ]

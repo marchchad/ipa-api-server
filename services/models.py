@@ -46,3 +46,9 @@ class KegRecipe(models.Model):
 
     class Meta:
         ordering = ('-created_on',)
+
+
+class Temperature(models.Model):
+    probe_serial_id = models.CharField(max_length=15)
+    name = models.CharField(max_length=50)
+    created_on = models.DateTimeField()
