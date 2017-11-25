@@ -33,3 +33,4 @@ skip_files:
 - ^(.*/)?\..*$
 - ^env/.*$
 - ^.venv/.*$
+- ^local_settings.py
