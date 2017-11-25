@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from models import Keg, Recipe, KegRecipe
+from models import Keg, Recipe, KegRecipe, Temperature
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -40,3 +40,11 @@ class KegRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = KegRecipe
         fields = ('keg_id', 'recipe_id', 'is_active', 'created_on')
+
+
+class TemperatureSerializer(serializers.ModelSerializer):
+    created_by = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Temperature
+        fields = ('id', 'name', 'temperature', 'created_by', 'created_on')

@@ -6,9 +6,9 @@ from services.permissions import IsOwnerOrReadOnly, IsOwnerFilterBackend
 admin.autodiscover()
 
 from rest_framework import viewsets, generics, permissions, filters
-from serializers import UserSerializer, GroupSerializer, KegSerializer, RecipeSerializer
+from serializers import UserSerializer, GroupSerializer, KegSerializer, RecipeSerializer, TemperatureSerializer
 
-from models import Keg, Recipe
+from models import Keg, Recipe, Temperature
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -42,6 +42,16 @@ class KegViewset(viewsets.ModelViewSet):
 class RecipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+    filter_backends = (IsOwnerFilterBackend,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class TemperatureViewset(viewsets.ModelViewSet):
+    queryset = Temperature.objects.all()
+    serializer_class = TemperatureSerializer
     filter_backends = (IsOwnerFilterBackend,)
     permission_classes = (permissions.IsAuthenticated,)
 

@@ -24,6 +24,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'kegs', views.KegViewset)
 router.register(r'recipes', views.RecipeViewset)
+router.register(r'temperatures', views.TemperatureViewset)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browseable API.

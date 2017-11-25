@@ -51,4 +51,6 @@ class KegRecipe(models.Model):
 class Temperature(models.Model):
     probe_serial_id = models.CharField(max_length=15)
     name = models.CharField(max_length=50)
+    temperature = models.FloatField()
+    created_by = models.ForeignKey('auth.User', related_name='temperatures')
     created_on = models.DateTimeField()
